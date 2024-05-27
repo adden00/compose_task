@@ -73,9 +73,12 @@ dependencies {
     implementation(libs.voyager.core)
     implementation(libs.voyager.navigator)
 
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
-    implementation("com.google.dagger:hilt-android:2.44")
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
+
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+
 
 
 
