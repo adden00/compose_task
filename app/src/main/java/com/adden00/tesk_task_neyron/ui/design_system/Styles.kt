@@ -7,12 +7,15 @@ import androidx.compose.ui.unit.sp
 object Styles {
     val base_text = TextStyle(
         color = Colors.white,
-        fontSize = 18.sp,
+        fontSize = 16.sp,
     )
 
     val text_grey_16 = base_text.copy(color = Colors.grey)
-    val text_header_24 = base_text.copy(
-        fontSize = 24.sp,
+
+    val text_header_26 = base_text.copy(
+        fontSize = 26.sp,
         fontWeight = FontWeight(600)
     )
+
+    val text_red_hint = base_text.copy(color = Colors.passive_red, fontSize = 14.sp)
 }

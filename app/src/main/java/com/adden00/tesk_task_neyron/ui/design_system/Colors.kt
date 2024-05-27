@@ -13,6 +13,7 @@ object Colors {
 
     val active_red = Color(0xFFEB3752)
     val passive_red = Color(0xFFAB3452)
+    val elements_bg = Color(0xFF26223A)
 
     val bg_gradient = Brush.verticalGradient(listOf(bg_top, bg_bottom))
 }

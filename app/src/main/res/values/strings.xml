@@ -3,4 +3,10 @@
     <string name="back">Назад</string>
     <string name="my_sells">Мои покупки</string>
     <string name="settings">Настройки</string>
+    <string name="email">E-mail</string>
+    <string name="need_confirm">Необходимо подтвердить</string>
+    <string name="enter_bio">Вход по биометрии</string>
+    <string name="change_pin">Сменить 4-х значный код</string>
+    <string name="bankRegister">Регистрация для клиентов банка</string>
+    <string name="language">Язык</string>
 </resources>

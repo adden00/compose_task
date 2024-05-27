@@ -28,12 +28,15 @@ fun TopPanel(onBackClick: () -> Unit) {
     ) {
         Button(
             onClick = onBackClick,
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Colors.bg_top
+            ),
             elevation = ButtonDefaults.buttonElevation(
                 defaultElevation = 4.dp,
                 pressedElevation = 0.dp
             ),
-            border = BorderStroke(1.dp, Colors.black),
-            contentPadding = PaddingValues(start = 8.dp, end = 8.dp)
+            border = BorderStroke(2.dp, Colors.black),
+            contentPadding = PaddingValues(start = 8.dp, end = 8.dp, top = 4.dp, bottom = 4.dp)
         ) {
 
             Spacer(modifier = Modifier.width(4.dp))
@@ -41,10 +44,11 @@ fun TopPanel(onBackClick: () -> Unit) {
                 painter = painterResource(id = R.drawable.ic_arrow_back),
                 contentDescription = "back"
             )
-            Spacer(modifier = Modifier.width(8.dp))
+            Spacer(modifier = Modifier.width(4.dp))
             Text(text = stringResource(id = R.string.back), style = Styles.base_text)
             Spacer(modifier = Modifier.width(4.dp))
 
         }
     }
 }
+
