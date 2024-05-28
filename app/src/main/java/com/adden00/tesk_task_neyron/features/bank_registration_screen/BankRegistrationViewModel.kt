@@ -2,8 +2,8 @@ package com.adden00.tesk_task_neyron.features.bank_registration_screen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.adden00.tesk_task_neyron.data.local.UserCache
-import com.adden00.tesk_task_neyron.data.local.models.User
+import com.adden00.tesk_task_neyron.data.DataRepository
+import com.adden00.tesk_task_neyron.data.models.User
 import com.adden00.tesk_task_neyron.features.bank_registration_screen.mvi.RegisterBankEffect
 import com.adden00.tesk_task_neyron.features.bank_registration_screen.mvi.RegisterBankEvent
 import com.adden00.tesk_task_neyron.features.bank_registration_screen.mvi.RegisterBankState
@@ -19,11 +19,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class BankRegistrationViewModel @Inject constructor() : ViewModel() {
+class BankRegistrationViewModel @Inject constructor(private val repository: DataRepository) : ViewModel() {
 
     private val _screenState = MutableStateFlow(RegisterBankState())
     val screenState: StateFlow<RegisterBankState> get() = _screenState.asStateFlow()
-
     private val _screenEffect = Channel<RegisterBankEffect>()
     val screenEffect: Flow<RegisterBankEffect> get() = _screenEffect.consumeAsFlow()
 
@@ -32,7 +31,7 @@ class BankRegistrationViewModel @Inject constructor() : ViewModel() {
             is RegisterBankEvent.ConfirmRegister -> {
                 _screenState.update { it.copy(isLoading = true) }
                 viewModelScope.launch {
-                    UserCache.updateCurrentUser(
+                    repository.setNewUser(
                         User(
                             event.registerInfo.name,
                             event.registerInfo.surname
@@ -42,7 +41,6 @@ class BankRegistrationViewModel @Inject constructor() : ViewModel() {
                     _screenEffect.send(RegisterBankEffect.NavigateToMain)
                 }
             }
-
         }
     }
 }

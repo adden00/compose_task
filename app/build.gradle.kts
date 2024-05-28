@@ -5,7 +5,6 @@ plugins {
     id ("org.jetbrains.kotlin.plugin.serialization") version ("1.9.0")
     id("com.google.dagger.hilt.android")
 
-
 }
 
 android {
@@ -14,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId = "com.adden00.tesk_task_neyron"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -69,13 +68,14 @@ dependencies {
     kapt(libs.androidx.room.compiler)
     implementation (libs.androidx.room.ktx)
     implementation (libs.androidx.room.runtime)
-    implementation(libs.kotlinx.serialization.json)
     implementation(libs.voyager.core)
     implementation(libs.voyager.navigator)
 
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
+
+    implementation (libs.kotlinx.serialization.json)
 
     implementation(libs.androidx.lifecycle.viewmodel.compose)
 

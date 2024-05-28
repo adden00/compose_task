@@ -20,4 +20,6 @@
     <string name="confirmation_text">Нажимая кнопку продолжить, вы соглашаетесь с условиями участия</string>
     <string name="continue_reg">Продолжить</string>
     <string name="wrong_data">Некорректные данные</string>
+    <string name="history">История</string>
+
 </resources>

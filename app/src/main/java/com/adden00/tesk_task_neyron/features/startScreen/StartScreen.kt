@@ -29,27 +29,26 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.adden00.tesk_task_neyron.R
 import com.adden00.tesk_task_neyron.app.navigation.BankScreenRoute
 import com.adden00.tesk_task_neyron.app.navigation.HistoryScreenRoute
-import com.adden00.tesk_task_neyron.data.local.UserCache
 import com.adden00.tesk_task_neyron.ui.design_system.ButtonBlock
 import com.adden00.tesk_task_neyron.ui.design_system.Colors
 import com.adden00.tesk_task_neyron.ui.design_system.Styles
 import com.adden00.tesk_task_neyron.ui.design_system.TopPanel
 
-const val phone = "+79143014334"
-const val email = "kursantic341@gmail.com"
-const val language = "русский"
 
 @Composable
 fun StartScreen(
+    viewModel: StartViewModel = hiltViewModel(),
     navigator: Navigator = LocalNavigator.currentOrThrow
 ) {
-    val user = UserCache.currentUser.collectAsState()
+    val userInfo = viewModel.currentUser.collectAsState()
+
     Box(modifier = Modifier.background(Colors.bg_gradient)) {
         Column(
             modifier = Modifier
@@ -65,10 +64,10 @@ fun StartScreen(
 
                 Spacer(modifier = Modifier.height(32.dp))
 
-                Text(text = user.value.name, style = Styles.text_header_26)
+                Text(text = userInfo.value.name, style = Styles.text_header_26)
 
                 Row {
-                    Text(text = user.value.surname, style = Styles.text_header_26)
+                    Text(text = userInfo.value.surname, style = Styles.text_header_26)
                     Spacer(modifier = Modifier.width(12.dp))
                     Icon(
                         modifier = Modifier.height(24.dp),
@@ -80,7 +79,7 @@ fun StartScreen(
 
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
-                    text = phone,
+                    text = userInfo.value.phone,
                     style = Styles.text_grey_16
                 )
 
@@ -106,14 +105,14 @@ fun StartScreen(
                 Text(text = stringResource(id = R.string.settings), style = Styles.text_grey_16)
                 Spacer(modifier = Modifier.height(8.dp))
 
-                ButtonBlock(onClick = { navigator.push(BankScreenRoute) }) {
+                ButtonBlock(onClick = {}) {
                     Text(text = stringResource(id = R.string.email), style = Styles.text_grey_16)
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Column(
                             verticalArrangement = Arrangement.SpaceAround,
                             horizontalAlignment = Alignment.Start
                         ) {
-                            Text(text = email, style = Styles.base_text)
+                            Text(text = userInfo.value.email, style = Styles.base_text)
                             Text(
                                 text = stringResource(id = R.string.need_confirm),
                                 style = Styles.text_red_hint
@@ -126,7 +125,7 @@ fun StartScreen(
 
                 Spacer(modifier = Modifier.height(8.dp))
 
-                ButtonBlock(onClick = { navigator.push(BankScreenRoute) }) {
+                ButtonBlock(onClick = {}) {
                     Text(
                         text = stringResource(id = R.string.enter_bio),
                         style = Styles.text_grey_16
@@ -147,7 +146,7 @@ fun StartScreen(
 
                 Spacer(modifier = Modifier.height(8.dp))
 
-                ButtonBlock(onClick = { navigator.push(BankScreenRoute) }) {
+                ButtonBlock(onClick = {}) {
                     Text(
                         text = stringResource(id = R.string.change_pin),
                         style = Styles.text_grey_16
@@ -174,7 +173,7 @@ fun StartScreen(
                         style = Styles.text_grey_16
                     )
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        Text(text = language, style = Styles.base_text)
+                        Text(text = userInfo.value.language, style = Styles.base_text)
                         ForwardIcon()
                     }
                 }

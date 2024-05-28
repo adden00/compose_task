@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -80,7 +82,7 @@ fun BankRegistrationScreen(
 
     if (state.value.isLoading) {
         Dialog(onDismissRequest = {}) {
-            Surface(shadowElevation = 10.dp) {
+            Surface(shadowElevation = 10.dp, color = Colors.bg_bottom) {
                 CircularProgressIndicator(modifier = Modifier.padding(24.dp))
             }
         }
@@ -91,98 +93,91 @@ fun BankRegistrationScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(start = 12.dp, end = 12.dp),
-            verticalArrangement = Arrangement.SpaceBetween
         ) {
-            Column(
-                modifier = Modifier.fillMaxWidth(),
-
-                ) {
-                TopPanel {
-                    navigator.pop()
-                }
-                Column(
-                    modifier = Modifier
-                        .verticalScroll(rememberScrollState())
-                ) {
-
-                    Spacer(modifier = Modifier.height(32.dp))
-
-                    Text(
-                        text = stringResource(id = R.string.bankRegister),
-                        style = Styles.text_header_26
-                    )
-
-                    Spacer(modifier = Modifier.height(32.dp))
-
-                    EditText(
-                        value = textFieldsState.value.number,
-                        isError = textFieldsChecker.value.isNumberError,
-                        label = stringResource(id = R.string.number),
-                        supportedText = stringResource(id = R.string.number_hint),
-                        onValueChange = {
-                            textFieldsState.value = textFieldsState.value.copy(number = it)
-                            textFieldsChecker.value =
-                                textFieldsChecker.value.copy(
-                                    isNumberError = !(textFieldsState.value.number.length == 16 &&
-                                            textFieldsState.value.number.isDigitsOnly())
-                                )
-                        })
-                    Spacer(modifier = Modifier.height(16.dp))
-
-                    EditText(
-                        value = textFieldsState.value.code,
-                        isError = textFieldsChecker.value.isCodeError,
-                        label = stringResource(id = R.string.code),
-                        supportedText = stringResource(id = R.string.code_hint),
-                        onValueChange = {
-                            textFieldsState.value = textFieldsState.value.copy(code = it)
-                            textFieldsChecker.value =
-                                textFieldsChecker.value.copy(
-                                    isCodeError = textFieldsState.value.code.isEmpty()
-                                )
-                        }
-                    )
-
-                    Spacer(modifier = Modifier.height(16.dp))
-
-
-                    EditText(
-                        value = textFieldsState.value.name,
-                        isError = textFieldsChecker.value.isNameError,
-                        label = stringResource(id = R.string.name),
-                        supportedText = stringResource(id = R.string.name_hint),
-                        onValueChange = {
-                            textFieldsState.value = textFieldsState.value.copy(name = it)
-                            textFieldsChecker.value =
-                                textFieldsChecker.value.copy(
-                                    isNameError = textFieldsState.value.name.isEmpty()
-
-                                )
-                        }
-                    )
-                    Spacer(modifier = Modifier.height(16.dp))
-
-                    EditText(
-                        value = textFieldsState.value.surname,
-                        isError = textFieldsChecker.value.isSurnameError,
-                        label = stringResource(id = R.string.surname),
-                        supportedText = stringResource(id = R.string.surname_hint),
-                        onValueChange = {
-                            textFieldsState.value = textFieldsState.value.copy(surname = it)
-                            textFieldsChecker.value =
-                                textFieldsChecker.value.copy(
-                                    isSurnameError = textFieldsState.value.surname.isEmpty()
-                                )
-                        }
-                    )
-                    Spacer(modifier = Modifier.height(16.dp))
-                }
+            TopPanel {
+                navigator.pop()
             }
-
             Column(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally
+                modifier = Modifier
+                    .weight(1f)
+                    .imePadding()
+                    .verticalScroll(rememberScrollState())
             ) {
+
+                Spacer(modifier = Modifier.height(32.dp))
+
+                Text(
+                    text = stringResource(id = R.string.bankRegister),
+                    style = Styles.text_header_26
+                )
+
+                Spacer(modifier = Modifier.height(32.dp))
+
+                EditText(
+                    value = textFieldsState.value.number,
+                    isError = textFieldsChecker.value.isNumberError,
+                    label = stringResource(id = R.string.number),
+                    supportedText = stringResource(id = R.string.number_hint),
+                    onValueChange = {
+                        textFieldsState.value = textFieldsState.value.copy(number = it)
+                        textFieldsChecker.value =
+                            textFieldsChecker.value.copy(
+                                isNumberError = !(textFieldsState.value.number.length == 16 &&
+                                        textFieldsState.value.number.isDigitsOnly())
+                            )
+                    })
+                Spacer(modifier = Modifier.height(16.dp))
+
+                EditText(
+                    value = textFieldsState.value.code,
+                    isError = textFieldsChecker.value.isCodeError,
+                    label = stringResource(id = R.string.code),
+                    supportedText = stringResource(id = R.string.code_hint),
+                    onValueChange = {
+                        textFieldsState.value = textFieldsState.value.copy(code = it)
+                        textFieldsChecker.value =
+                            textFieldsChecker.value.copy(
+                                isCodeError = textFieldsState.value.code.isEmpty()
+                            )
+                    }
+                )
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+
+                EditText(
+                    value = textFieldsState.value.name,
+                    isError = textFieldsChecker.value.isNameError,
+                    label = stringResource(id = R.string.name),
+                    supportedText = stringResource(id = R.string.name_hint),
+                    onValueChange = {
+                        textFieldsState.value = textFieldsState.value.copy(name = it)
+                        textFieldsChecker.value =
+                            textFieldsChecker.value.copy(
+                                isNameError = textFieldsState.value.name.isEmpty()
+
+                            )
+                    }
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+
+                EditText(
+                    value = textFieldsState.value.surname,
+                    isError = textFieldsChecker.value.isSurnameError,
+                    label = stringResource(id = R.string.surname),
+                    supportedText = stringResource(id = R.string.surname_hint),
+                    onValueChange = {
+                        textFieldsState.value = textFieldsState.value.copy(surname = it)
+                        textFieldsChecker.value =
+                            textFieldsChecker.value.copy(
+                                isSurnameError = textFieldsState.value.surname.isEmpty()
+                            )
+                    }
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.weight(1f))
+
+
                 Text(
                     text = stringResource(id = R.string.confirmation_text),
                     style = Styles.text_grey_16,
@@ -206,6 +201,7 @@ fun BankRegistrationScreen(
                 Spacer(modifier = Modifier.height(8.dp))
             }
         }
+
     }
 }
 
