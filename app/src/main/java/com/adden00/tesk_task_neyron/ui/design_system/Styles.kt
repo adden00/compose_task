@@ -11,6 +11,9 @@ object Styles {
     )
 
     val text_grey_16 = base_text.copy(color = Colors.grey)
+    val text_grey_12 = base_text.copy(color = Colors.grey, fontSize = 12.sp)
+
+    val text_red_14 = base_text.copy(color = Colors.passive_red, fontSize = 14.sp)
 
     val text_header_26 = base_text.copy(
         fontSize = 26.sp,

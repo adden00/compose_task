@@ -9,4 +9,15 @@
     <string name="change_pin">Сменить 4-х значный код</string>
     <string name="bankRegister">Регистрация для клиентов банка</string>
     <string name="language">Язык</string>
+    <string name="number">Номер участника</string>
+    <string name="code">Код</string>
+    <string name="name">Имя</string>
+    <string name="surname">Фамилия</string>
+    <string name="number_hint">Номер из 16 цифр, который вы получили от банка</string>
+    <string name="code_hint">Код, который вы получили от банка</string>
+    <string name="name_hint">Имя (на латинице, как в загранпаспорте)</string>
+    <string name="surname_hint">Фамилия (на латинице, как в загранпаспорте)</string>
+    <string name="confirmation_text">Нажимая кнопку продолжить, вы соглашаетесь с условиями участия</string>
+    <string name="continue_reg">Продолжить</string>
+    <string name="wrong_data">Некорректные данные</string>
 </resources>

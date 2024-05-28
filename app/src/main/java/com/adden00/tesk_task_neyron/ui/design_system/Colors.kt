@@ -7,6 +7,7 @@ object Colors {
     val white = Color(0xFFFFFFFF)
     val black = Color(0xFF000000)
     val grey = Color(0xFF918EA3)
+    val transparent = Color(0x00000000)
 
     val bg_top = Color(0xFF3F3A58)
     val bg_bottom = Color(0xFF2A2545)

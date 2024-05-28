@@ -2,7 +2,6 @@ package com.adden00.tesk_task_neyron.features.startScreen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,16 +9,13 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
@@ -32,7 +28,6 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.Navigator
@@ -41,6 +36,7 @@ import com.adden00.tesk_task_neyron.R
 import com.adden00.tesk_task_neyron.app.navigation.BankScreenRoute
 import com.adden00.tesk_task_neyron.app.navigation.HistoryScreenRoute
 import com.adden00.tesk_task_neyron.data.local.UserCache
+import com.adden00.tesk_task_neyron.ui.design_system.ButtonBlock
 import com.adden00.tesk_task_neyron.ui.design_system.Colors
 import com.adden00.tesk_task_neyron.ui.design_system.Styles
 import com.adden00.tesk_task_neyron.ui.design_system.TopPanel
@@ -187,33 +183,6 @@ fun StartScreen(
     }
 }
 
-@Composable
-fun ButtonBlock(
-    onClick: () -> Unit, padding: PaddingValues = PaddingValues(
-        start = 8.dp,
-        end = 8.dp,
-        top = 20.dp,
-        bottom = 20.dp
-    ), block: @Composable () -> Unit
-) {
-    Surface(shape = RoundedCornerShape(15.dp),
-        color = Colors.elements_bg,
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable {
-                onClick()
-            }) {
-        Row(
-            modifier = Modifier.padding(
-                padding
-            ),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            block()
-        }
-    }
-}
 
 @Composable
 fun ForwardIcon() {
@@ -227,9 +196,3 @@ fun ForwardIcon() {
     )
 }
 
-
-@Preview
-@Composable
-fun Preview() {
-    StartScreen()
-}
