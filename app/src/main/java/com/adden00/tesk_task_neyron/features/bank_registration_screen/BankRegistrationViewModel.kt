@@ -19,7 +19,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class BankRegistrationViewModel @Inject constructor(private val repository: DataRepository) : ViewModel() {
+class BankRegistrationViewModel @Inject constructor(private val repository: DataRepository) :
+    ViewModel() {
 
     private val _screenState = MutableStateFlow(RegisterBankState())
     val screenState: StateFlow<RegisterBankState> get() = _screenState.asStateFlow()

@@ -10,7 +10,8 @@ interface UserCache {
     val currentUser: StateFlow<User>
     fun updateCurrentUser(newUser: User)
 }
-object UserCacheImplementation: UserCache {
+
+object UserCacheImplementation : UserCache {
     private val _currentUser = MutableStateFlow(User("art", "art"))
     override val currentUser: StateFlow<User> get() = _currentUser.asStateFlow()
     override fun updateCurrentUser(newUser: User) {

@@ -17,8 +17,9 @@ class GetHistoryDataUseCase @Inject constructor(private val repository: DataRepo
             .asSequence()
             .map {
                 val date: Date = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-                    .parse(it.date.replace("T", " ")
-                        .replace("Z", "")
+                    .parse(
+                        it.date.replace("T", " ")
+                            .replace("Z", "")
                     ) ?: throw Exception("Unknown format")
                 val formattedDate = DateModel(
                     SimpleDateFormat("dd.MM.yyyy").format(date),
@@ -32,10 +33,10 @@ class GetHistoryDataUseCase @Inject constructor(private val repository: DataRepo
                 }
             }
             .flatten()                                   // собрали в единый список
-            .groupBy{                    // сгруппировали по дате
+            .groupBy {                    // сгруппировали по дате
                 it.first
             }.map { // собрали в нужную модельку
-                HistoryModel(date = it.key, names = it.value.map {it.second})
+                HistoryModel(date = it.key, names = it.value.map { it.second })
             }
             .toList()
     }

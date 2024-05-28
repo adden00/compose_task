@@ -14,6 +14,7 @@ class StubDataSource @Inject constructor(@ApplicationContext private val context
     companion object {
         private const val STUB_RESPONSE = ""
     }
+
     @OptIn(ExperimentalSerializationApi::class)
     fun getHistory(): HistoryResponse {
         return Json.decodeFromStream(context.resources.openRawResource(R.raw.response))

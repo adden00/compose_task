@@ -65,7 +65,12 @@ fun HistoryScreen(
             )
 
             Spacer(modifier = Modifier.height(32.dp))
-            Text(modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center, text = stringResource(id = R.string.history), style = Styles.text_header_26)
+            Text(
+                modifier = Modifier.fillMaxWidth(),
+                textAlign = TextAlign.Center,
+                text = stringResource(id = R.string.history),
+                style = Styles.text_header_26
+            )
             Spacer(modifier = Modifier.height(16.dp))
             Box(
                 modifier = Modifier
@@ -76,10 +81,17 @@ fun HistoryScreen(
                 LazyColumn {
                     state.value.historyList.forEach {
                         item {
-                            Text(text = it.date, style = Styles.text_header_26.copy(fontSize = 20.sp))
+                            Text(
+                                text = it.date,
+                                style = Styles.text_header_26.copy(fontSize = 20.sp)
+                            )
                         }
                         items(it.names) { name ->
-                            Text(modifier = Modifier.padding(start = 16.dp, top = 4.dp), text = name, style = Styles.base_text)
+                            Text(
+                                modifier = Modifier.padding(start = 16.dp, top = 4.dp),
+                                text = name,
+                                style = Styles.base_text
+                            )
                         }
                         item {
                             Spacer(modifier = Modifier.height(8.dp))

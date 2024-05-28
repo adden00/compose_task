@@ -5,15 +5,15 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class HistoryResponse(
-    @SerialName ("data")
+    @SerialName("data")
     val data: List<DateModel>
 )
 
 @Serializable
 data class DateModel(
-    @SerialName ("date")
+    @SerialName("date")
     val date: String,
 
-    @SerialName ("name")
+    @SerialName("name")
     val name: List<String>
 )
