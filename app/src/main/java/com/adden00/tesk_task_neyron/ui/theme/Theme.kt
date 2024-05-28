@@ -54,9 +54,6 @@ fun Tesk_task_neyronTheme(
         darkTheme -> DarkColorScheme
         else -> LightColorScheme
     }
-
-    val darkTheme = isSystemInDarkTheme()
-
     val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {
