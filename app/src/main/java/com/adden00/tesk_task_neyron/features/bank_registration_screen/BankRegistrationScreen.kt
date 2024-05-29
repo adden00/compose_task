@@ -112,7 +112,7 @@ fun BankRegistrationScreen(
                 EditText(
                     value = textFieldsState.value.number,
                     isError = textFieldsChecker.value.isNumberError,
-                    label = stringResource(id = R.string.number),
+                    placeholder = stringResource(id = R.string.number),
                     supportedText = stringResource(id = R.string.number_hint),
                     onValueChange = {
                         textFieldsState.value = textFieldsState.value.copy(number = it)
@@ -127,7 +127,7 @@ fun BankRegistrationScreen(
                 EditText(
                     value = textFieldsState.value.code,
                     isError = textFieldsChecker.value.isCodeError,
-                    label = stringResource(id = R.string.code),
+                    placeholder = stringResource(id = R.string.code),
                     supportedText = stringResource(id = R.string.code_hint),
                     onValueChange = {
                         textFieldsState.value = textFieldsState.value.copy(code = it)
@@ -140,11 +140,10 @@ fun BankRegistrationScreen(
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-
                 EditText(
                     value = textFieldsState.value.name,
                     isError = textFieldsChecker.value.isNameError,
-                    label = stringResource(id = R.string.name),
+                    placeholder = stringResource(id = R.string.name),
                     supportedText = stringResource(id = R.string.name_hint),
                     onValueChange = {
                         textFieldsState.value = textFieldsState.value.copy(name = it)
@@ -160,7 +159,7 @@ fun BankRegistrationScreen(
                 EditText(
                     value = textFieldsState.value.surname,
                     isError = textFieldsChecker.value.isSurnameError,
-                    label = stringResource(id = R.string.surname),
+                    placeholder = stringResource(id = R.string.surname),
                     supportedText = stringResource(id = R.string.surname_hint),
                     onValueChange = {
                         textFieldsState.value = textFieldsState.value.copy(surname = it)
@@ -197,7 +196,6 @@ fun BankRegistrationScreen(
                 Spacer(modifier = Modifier.height(8.dp))
             }
         }
-
     }
 }
 

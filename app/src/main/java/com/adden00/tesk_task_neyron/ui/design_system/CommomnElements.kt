@@ -112,7 +112,7 @@ fun BigButton(onClick: () -> Unit, enabled: Boolean, content: @Composable () -> 
 fun EditText(
     isError: Boolean = false,
     value: String,
-    label: String,
+    placeholder: String,
     supportedText: String,
     onValueChange: (String) -> Unit
 
@@ -126,10 +126,8 @@ fun EditText(
             containerColor = Colors.elements_bg,
             errorContainerColor = Colors.elements_bg,
             errorSupportingTextColor = Colors.passive_red,
-            unfocusedLabelColor = Colors.grey,
             focusedTextColor = Colors.white,
             errorTextColor = Colors.active_red,
-            focusedLabelColor = Colors.grey,
             unfocusedTextColor = Colors.white,
             errorBorderColor = Colors.active_red,
             disabledBorderColor = Colors.transparent,
@@ -139,8 +137,11 @@ fun EditText(
             ),
 
         isError = isError,
-        label = {
-            Text(text = label)
+        placeholder = {
+            Text(
+                text = placeholder,
+                style = if (isError) Styles.text_red_14 else Styles.text_grey_14
+            )
         },
         value = value,
         onValueChange = {

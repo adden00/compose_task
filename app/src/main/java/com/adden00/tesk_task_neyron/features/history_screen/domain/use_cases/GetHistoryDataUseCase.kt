@@ -27,16 +27,11 @@ class GetHistoryDataUseCase @Inject constructor(private val repository: DataRepo
                 )
                 formattedDate                      // поменяли формат
             }
-            .map {                            // собрали пары дата-имя
-                it.name.map { name ->
-                    Pair(it.date, name)
-                }
+            .groupBy {                        // сгруппировали по дате
+                it.date
             }
-            .flatten()                                   // собрали в единый список
-            .groupBy {                    // сгруппировали по дате
-                it.first
-            }.map { // собрали в нужную модельку
-                HistoryModel(date = it.key, names = it.value.map { it.second })
+            .map {           // собрали в нужные модельки
+                HistoryModel(date = it.key, names = it.value.map { it.name }.flatten())
             }
             .toList()
     }

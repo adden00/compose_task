@@ -60,8 +60,7 @@ fun Tesk_task_neyronTheme(
             val window = (view.context as Activity).window
             window.statusBarColor = Colors.bg_top.toArgb()
             window.navigationBarColor = Colors.bg_bottom.toArgb()
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars =
-                darkTheme
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = true
         }
     }
 
