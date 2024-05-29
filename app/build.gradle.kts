@@ -1,9 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.hilt.android)
+    alias(libs.plugins.kotlinx.serialization)
     id("kotlin-kapt")
-    id ("org.jetbrains.kotlin.plugin.serialization") version ("1.9.0")
-    id("com.google.dagger.hilt.android")
 
 }
 
@@ -64,10 +64,6 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
-    //room
-    kapt(libs.androidx.room.compiler)
-    implementation (libs.androidx.room.ktx)
-    implementation (libs.androidx.room.runtime)
     implementation(libs.voyager.core)
     implementation(libs.voyager.navigator)
 
@@ -78,9 +74,6 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
 
     implementation(libs.androidx.lifecycle.viewmodel.compose)
-
-
-
 
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
